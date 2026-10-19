@@ -6,7 +6,6 @@ Bundler.require(*Rails.groups)
 
 module FlowboardBackend
   class Application < Rails::Application
-
     config.api_only = true
     config.load_defaults 8.0
 
@@ -15,12 +14,12 @@ module FlowboardBackend
     # CORS configuration
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'http://localhost:3000' # Replace with your frontend URL
+        origins "http://localhost:3000" # Replace with your frontend URL
 
-        resource '*',
+        resource "*",
                  headers: :any,
-                 methods: [:get, :post, :put, :patch, :delete, :options, :head],
-                 expose: ['Authorization'],
+                 methods: [ :get, :post, :put, :patch, :delete, :options, :head ],
+                 expose: [ "Authorization" ],
                  credentials: true
       end
     end
